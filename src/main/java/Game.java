@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class Game {
     public void guess(String gameNumber) {
         if(gameNumber==null){
@@ -8,6 +11,13 @@ public class Game {
 
         for(char ch : gameNumber.toCharArray()){
             if(ch<'0' || ch> '9'){
+                throw new IllegalArgumentException();
+            }
+        }
+
+        Set<Character> seen = new HashSet<>();
+        for (char c : gameNumber.toCharArray()) {
+            if (!seen.add(c)) {
                 throw new IllegalArgumentException();
             }
         }
