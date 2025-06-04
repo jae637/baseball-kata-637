@@ -2,8 +2,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Game {
-    public void guess(String gameNumber) {
-        if(gameNumber==null){
+    public GuessResult guess(String gameNumber) {
+        precondition(gameNumber);
+
+        return new GuessResult();
+    }
+
+    private void precondition(String gameNumber) {
+        if(gameNumber ==null){
             throw new IllegalArgumentException();
         }
         if(gameNumber.length() != 3)
