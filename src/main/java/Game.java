@@ -14,7 +14,11 @@ public class Game {
             int balls = checkBalls(gameNumber);
 
             if(strikes >0){
-                return new GuessResult(false, strikes,0);
+                if(balls>0){
+                    return new GuessResult(false, strikes,balls);
+                }else{
+                    return new GuessResult(false, strikes,0);
+                }
             }else{
                 if(balls > 0){
                     return new GuessResult(false,0,balls);
@@ -30,7 +34,7 @@ public class Game {
         if(gameNumber.contains(question.charAt(0)+"")) cnt++;
         if(gameNumber.contains(question.charAt(1)+"")) cnt++;
         if(gameNumber.contains(question.charAt(2)+"")) cnt++;
-        return cnt;
+        return cnt-checkStrikes(gameNumber);
     }
 
     private int checkStrikes(String gameNumber) {
