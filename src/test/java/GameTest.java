@@ -17,13 +17,6 @@ class GameTest {
         assertNotNull(game);
     }
 
-    @Test
-    void throwExceptionWhenInputIsNull(){
-        assertIllegalArgument(null);
-        assertIllegalArgument("12");
-        assertIllegalArgument("1234");
-    }
-
     private void assertIllegalArgument(String number) {
         try{
             game.guess(number);
@@ -31,6 +24,14 @@ class GameTest {
         }catch(IllegalArgumentException ex) {
 
         }
+    }
+
+    @Test
+    void throwExceptionWhenInputIsNull(){
+        assertIllegalArgument(null);
+        assertIllegalArgument("12");
+        assertIllegalArgument("1234");
+        assertIllegalArgument("12s");
     }
 
 }

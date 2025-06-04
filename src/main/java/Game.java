@@ -5,5 +5,11 @@ public class Game {
         }
         if(gameNumber.length() != 3)
             throw new IllegalArgumentException();
+
+        for(char ch : gameNumber.toCharArray()){
+            if(ch<'0' || ch> '9'){
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
