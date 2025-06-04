@@ -49,4 +49,15 @@ class GameTest {
         assertThat(result.getBalls()).isEqualTo(0);
     }
 
+    @Test
+    void notMatchedAllNumber(){
+        game.question = "123";
+        GuessResult result = game.guess("456");
+
+        assertThat(result).isNotNull();
+        assertThat(result.isSolved()).isEqualTo(false);
+        assertThat(result.getStrikes()).isEqualTo(0);
+        assertThat(result.getBalls()).isEqualTo(0);
+    }
+
 }

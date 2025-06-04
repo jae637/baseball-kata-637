@@ -7,7 +7,11 @@ public class Game {
     public GuessResult guess(String gameNumber) {
         precondition(gameNumber);
 
-        return new GuessResult(true,3,0);
+        if(question.equals(gameNumber)){
+            return new GuessResult(true,3,0);
+        }else{
+            return new GuessResult(false,0,0);
+        }
     }
 
     private void precondition(String gameNumber) {
