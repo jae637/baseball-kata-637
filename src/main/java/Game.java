@@ -10,8 +10,20 @@ public class Game {
         if(question.equals(gameNumber)){
             return new GuessResult(true,3,0);
         }else{
-            return new GuessResult(false,0,0);
+            if(checkStrikes(gameNumber)>0){
+                return new GuessResult(false,checkStrikes(gameNumber),0);
+            }else{
+                return new GuessResult(false,0,0);
+            }
         }
+    }
+
+    private int checkStrikes(String gameNumber) {
+        int cnt = 0;
+        if(question.charAt(0)==gameNumber.charAt(0)) cnt++;
+        if(question.charAt(1)==gameNumber.charAt(1)) cnt++;
+        if(question.charAt(2)==gameNumber.charAt(2)) cnt++;
+        return cnt;
     }
 
     private void precondition(String gameNumber) {

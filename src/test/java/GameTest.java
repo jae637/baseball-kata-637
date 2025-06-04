@@ -47,6 +47,17 @@ class GameTest {
 
         assertCorrectAnswer(result, solved, strikes, balls);
     }
+    @Test
+    void matchedTwoStrikes(){
+        setGameQuestion("123");
+        GuessResult result = game.guess("129");
+
+        boolean solved = false;
+        int strikes = 2;
+        int balls = 0;
+
+        assertCorrectAnswer(result, solved, strikes, balls);
+    }
 
     @Test
     void notMatchedAllNumber(){
