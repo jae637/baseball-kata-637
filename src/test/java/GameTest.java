@@ -1,7 +1,10 @@
+import static org.assertj.core.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
 
@@ -14,7 +17,7 @@ class GameTest {
 
     @Test
     void createGame(){
-        assertNotNull(game);
+        Assertions.assertNotNull(game);
     }
 
     private void assertIllegalArgument(String number) {
@@ -33,6 +36,17 @@ class GameTest {
         assertIllegalArgument("1234");
         assertIllegalArgument("12s");
         assertIllegalArgument("121");
+    }
+
+    @Test
+    void returnSomething(){
+        game.question = "123";
+        GuessResult result = game.guess("123");
+
+        assertThat(result).isNotNull();
+        assertThat(result.isSolved()).isEqualTo(true);
+        assertThat(result.getStrikes()).isEqualTo(3);
+        assertThat(result.getBalls()).isEqualTo(0);
     }
 
 }

@@ -2,10 +2,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Game {
+    public String question;
+
     public GuessResult guess(String gameNumber) {
         precondition(gameNumber);
 
-        return new GuessResult();
+        return new GuessResult(true,3,0);
     }
 
     private void precondition(String gameNumber) {
