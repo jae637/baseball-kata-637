@@ -8,24 +8,29 @@ public class Game {
         precondition(gameNumber);
 
         if(question.equals(gameNumber)){
-            return new GuessResult(true,3,0);
+            return correctAnswer();
         }else{
-            int strikes = checkStrikes(gameNumber);
-            int balls = checkBalls(gameNumber);
+            return wrongAnswer(gameNumber);
 
-            if(strikes >0){
-                if(balls>0){
-                    return new GuessResult(false, strikes,balls);
-                }else{
-                    return new GuessResult(false, strikes,0);
-                }
-            }else{
-                if(balls > 0){
-                    return new GuessResult(false,0,balls);
-                }else{
-                    return new GuessResult(false,0,0);
-                }
-            }
+        }
+    }
+
+    private GuessResult correctAnswer() {
+        return new GuessResult(true, 3, 0);
+    }
+
+    private GuessResult wrongAnswer(String gameNumber) {
+        int strikes = checkStrikes(gameNumber);
+        int balls = checkBalls(gameNumber);
+
+        if(strikes >0 && balls > 0) {
+            return new GuessResult(false, strikes, balls);
+        } else if (balls > 0) {
+            return new GuessResult(false, 0, balls);
+        } else if (strikes > 0) {
+            return new GuessResult(false, strikes, 0);
+        } else {
+            return new GuessResult(false, 0, 0);
         }
     }
 
