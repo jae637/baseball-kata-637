@@ -15,6 +15,10 @@ public class Game {
             }
         }
 
+        checkDuplicatedNumber(gameNumber);
+    }
+
+    private void checkDuplicatedNumber(String gameNumber) {
         Set<Character> seen = new HashSet<>();
         for (char c : gameNumber.toCharArray()) {
             if (!seen.add(c)) {
