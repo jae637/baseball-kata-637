@@ -10,8 +10,10 @@ public class Game {
         if(question.equals(gameNumber)){
             return new GuessResult(true,3,0);
         }else{
-            if(checkStrikes(gameNumber)>0){
-                return new GuessResult(false,checkStrikes(gameNumber),0);
+            int strikes = checkStrikes(gameNumber);
+
+            if(strikes >0){
+                return new GuessResult(false, strikes,0);
             }else{
                 return new GuessResult(false,0,0);
             }
