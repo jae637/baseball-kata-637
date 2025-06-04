@@ -11,13 +11,26 @@ public class Game {
             return new GuessResult(true,3,0);
         }else{
             int strikes = checkStrikes(gameNumber);
+            int balls = checkBalls(gameNumber);
 
             if(strikes >0){
                 return new GuessResult(false, strikes,0);
             }else{
-                return new GuessResult(false,0,0);
+                if(balls > 0){
+                    return new GuessResult(false,0,balls);
+                }else{
+                    return new GuessResult(false,0,0);
+                }
             }
         }
+    }
+
+    private int checkBalls(String gameNumber) {
+        int cnt =0;
+        if(gameNumber.contains(question.charAt(0)+"")) cnt++;
+        if(gameNumber.contains(question.charAt(1)+"")) cnt++;
+        if(gameNumber.contains(question.charAt(2)+"")) cnt++;
+        return cnt;
     }
 
     private int checkStrikes(String gameNumber) {
