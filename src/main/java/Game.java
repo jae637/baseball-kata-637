@@ -1,6 +1,6 @@
 public class Game {
-    public void guess(Object o) {
-        if(o==null){
+    public void guess(Object gameNumber) {
+        if(gameNumber==null){
             throw new IllegalArgumentException();
         }
     }
